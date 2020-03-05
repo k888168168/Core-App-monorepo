@@ -1,16 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { showHideReducer } from "./../store/showHideElement/hide-show.reducer";
+import { StoreModule } from "@ngrx/store";
+import { AdminLibModule } from "./../../../../admin-lib/src/lib/admin-lib.module";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FirstComponent } from './first.component';
+import { FirstComponent } from "./first.component";
 
-describe('FirstComponent', () => {
+describe("FirstComponent", () => {
   let component: FirstComponent;
   let fixture: ComponentFixture<FirstComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FirstComponent ]
-    })
-    .compileComponents();
+      imports: [
+        StoreModule.forRoot({ app1ShowHide: showHideReducer }),
+        AdminLibModule
+      ],
+      declarations: [FirstComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +25,7 @@ describe('FirstComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
